@@ -1,0 +1,23 @@
+{
+  "name": "opera-portfolio",
+  "version": "3.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p config/tsconfig.json",
+    "watch": "tsc -p config/tsconfig.json -w",
+    "start": "node --no-warnings --env-file-if-exists=.env server/serve.ts",
+    "db:test": "node --no-warnings server/db-postgres.test.ts",
+    "oauth:check": "node --no-warnings --env-file=.env server/oauth-check.ts",
+    "mail:test": "node --no-warnings --env-file=.env server/mail-test.ts",
+    "db:init": "node --no-warnings server/init.ts",
+    "db:import-sqlite": "node --no-warnings scripts/import-sqlite.ts",
+    "dev": "node --no-warnings --env-file-if-exists=.env server/serve.ts"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@types/pg": "^8.23.1",
+    "pg": "^8.23.1"
+  }
+}

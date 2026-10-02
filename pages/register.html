@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><script>(function(){var d=document.documentElement,w=window,n=navigator,ua=n.userAgent||'',vp=document.querySelector('meta[name=viewport]');
+function small(){var s=w.screen||{};return Math.min(s.width||9999,s.height||9999)}
+function phone(){try{if(n.userAgentData&&n.userAgentData.mobile)return true}catch(e){}
+if(/Android.+Mobile|iPhone|iPod|Windows Phone|Mobile/i.test(ua))return true;
+var t=(n.maxTouchPoints||0)>0&&w.matchMedia&&matchMedia('(pointer:coarse)').matches;
+return t&&small()<=560}
+function set(){d.setAttribute('data-device',phone()||w.innerWidth<=800?'mobile':'desktop')}
+set();
+if(phone()){var sw=(w.screen&&w.screen.width)||0;
+if(sw&&w.innerWidth>sw*1.25){if(vp)vp.setAttribute('content','width='+sw+',initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover');
+setTimeout(function(){var iw=w.innerWidth;if(sw&&iw>sw*1.25){d.style.zoom=String(iw/sw);d.setAttribute('data-fixed','zoom')}},150)}}
+w.addEventListener('resize',set);w.addEventListener('orientationchange',function(){setTimeout(set,200)})})();</script><meta name="theme-color" content="#05071a"><link rel="manifest" href="../assets/manifest.webmanifest"><meta name="description" content="موقع Opera: تصميم وتطوير مواقع وتطبيقات بتجارب حية وأشكال هندسية."><meta property="og:title" content="Opera"><meta property="og:description" content="موقع Opera: تصميم وتطوير مواقع وتطبيقات بتجارب حية وأشكال هندسية."><meta property="og:type" content="website"><meta property="og:image" content="../assets/icons/og.png"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="../assets/icons/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="../assets/icons/icon-192.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Opera","description":"موقع Opera: تصميم وتطوير مواقع وتطبيقات بتجارب حية وأشكال هندسية.","inLanguage":"ar"}</script>
+<title>مستخدم جديد | Opera</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;900&family=Reem+Kufi:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/styles.css">
+</head><body>
+<div id="glow"></div><canvas id="gl"></canvas>
+<div id="ld"><span>Opera</span></div><a class="skip" href="#top">تخطَّ إلى المحتوى</a>
+
+
+<main id="top">
+<section class="pg lgp" id="registerpg"><div class="lgc"><h2>إنشاء حساب</h2><p class="sub">انضم إلى Opera في ثوانٍ.</p>
+<form id="rgf" novalidate>
+<div class="fld"><input id="rgn" type="text" placeholder="الاسم الكامل" aria-label="الاسم الكامل" autocomplete="name"></div>
+<div class="fld"><input id="rge" type="email" placeholder="البريد الإلكتروني" aria-label="البريد الإلكتروني" autocomplete="email" aria-describedby="rgeh"></div>
+<p class="hint" id="rgeh" role="status"></p>
+<div class="fld"><input id="rgp" type="password" placeholder="كلمة المرور" aria-label="كلمة المرور" autocomplete="new-password"><button type="button" class="ib eye" data-eye aria-label="إظهار كلمة المرور" aria-pressed="false"><svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg><svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"/><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"/><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"/><path d="m2 2 20 20"/></svg></button></div>
+<div class="sbw" id="rgsw" hidden><div class="sb" id="rgsb" data-s="0"><span></span><span></span><span></span><span></span></div><p class="sl"><span>قوة كلمة المرور</span>: <b id="rgst"></b></p></div>
+<div class="fld"><input id="rgc" type="password" placeholder="تأكيد كلمة المرور" aria-label="تأكيد كلمة المرور" autocomplete="new-password" aria-describedby="rgch"><button type="button" class="ib eye" data-eye aria-label="إظهار كلمة المرور" aria-pressed="false"><svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg><svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"/><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"/><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"/><path d="m2 2 20 20"/></svg></button></div>
+<p class="hint" id="rgch" role="status"></p>
+<label class="rm"><input type="checkbox" id="rgt"><span>أوافق على الشروط وسياسة الخصوصية</span></label>
+<button class="btn pri" type="submit"><span>إنشاء حساب</span><i class="sp" aria-hidden="true"></i></button><p id="lgm" role="status"></p></form>
+<div class="lgo" id="rgo"><span>أو انضم عبر</span></div>
+<div class="lgs" id="rgs"><button type="button" class="btn" data-p="google"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23 12.3c0-.8-.1-1.5-.2-2.2H12v4.2h6.2a5.3 5.3 0 0 1-2.3 3.5v2.9h3.7c2.2-2 3.4-5 3.4-8.4z"/><path fill="#34A853" d="M12 24c3.1 0 5.7-1 7.6-2.8l-3.7-2.9c-1 .7-2.3 1.1-3.9 1.1-3 0-5.5-2-6.4-4.7H1.800v3A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.6 14.7a7.2 7.2 0 0 1 0-4.600v-3H1.800a12 12 0 0 0 0 10.600l3.800-3z"/><path fill="#EA4335" d="M12 4.800c1.700 0 3.200.6 4.400 1.700l3.300-3.300A12 12 0 0 0 1.800 7.100l3.800 3C6.500 6.800 9 4.800 12 4.800z"/></svg>Google</button><button type="button" class="btn" data-p="github"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .5a11.500 11.500 0 0 0-3.600 22.400c.6.100.8-.3.8-.6v-2c-3.200.7-3.900-1.500-3.900-1.500-.5-1.300-1.300-1.700-1.300-1.700-1-.7.100-.7.100-.7 1.200.1 1.800 1.200 1.800 1.200 1 1.800 2.700 1.300 3.400 1 .1-.8.4-1.300.7-1.600-2.600-.3-5.300-1.300-5.300-5.700 0-1.300.5-2.300 1.200-3.100-.1-.3-.5-1.500.1-3.100 0 0 1-.3 3.200 1.200a11 11 0 0 1 5.800 0C17 5.300 18 5.600 18 5.600c.6 1.600.2 2.800.1 3.100.7.800 1.200 1.800 1.200 3.100 0 4.400-2.700 5.400-5.300 5.700.4.400.8 1.100.8 2.200v3.200c0 .3.2.7.8.6A11.500 11.500 0 0 0 12 .5z"/></svg>GitHub</button></div>
+<p class="note" id="rgnote" hidden>إن لم يصلك البريد، تحقق من مجلد الرسائل غير المرغوبة.</p>
+<p class="lgh"><span>لديك حساب بالفعل؟</span> <a class="lk" href="login.html">تسجيل الدخول</a></p>
+<p class="lgh"><a href="../index.html">الرئيسية</a></p></div></section>
+</main>
+<footer class="ft"><div class="fw">
+<div class="fb"><a class="brand" href="../index.html">Op<i>era</i></a><p>Opera تحوّل الأفكار إلى تجارب حيّة. تابعنا على حساباتنا أو راسلنا مباشرة.</p></div>
+<nav><h4>روابط سريعة</h4><a href="about.html">عني</a><a href="gallery.html">المعرض</a><a href="services.html">خدماتي</a><a href="tools.html">أدواتي</a><a href="faq.html">أسئلة</a></nav>
+<div><h4>حساباتنا</h4><div class="so"><a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://x.com/" target="_blank" rel="noopener noreferrer">X</a><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://t.me/" target="_blank" rel="noopener noreferrer">Telegram</a><a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">YouTube</a></div></div>
+<div class="col"><h4>تواصل معنا</h4><a href="mailto:you@example.com">you@example.com</a><span>متاح للعمل عن بعد</span><a href="../index.html#contact">أرسل لنا فكرتك</a></div>
+</div><div class="fl"><span>© 2026 Opera. جميع الحقوق محفوظة.</span><span>صُنع بـ <bdi>HTML · CSS · TypeScript</bdi></span><span>الزيارات من جهازك: <b id="vc">0</b></span></div></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script type="module" src="../assets/js/main.js"></script>
+</body></html>

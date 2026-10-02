@@ -1,21 +1,33 @@
-PostgreSQL Database Management System
-=====================================
+# Opera
 
-This directory contains the source code distribution of the PostgreSQL
-database management system.
+موقع عربي/إنجليزي مبني بـ Node.js وTypeScript. الخادم يستخدم PostgreSQL الخاص بمشروع Replit؛ SQLite لم تعد قاعدة التشغيل.
 
-PostgreSQL is an advanced object-relational database management system
-that supports an extended subset of the SQL standard, including
-transactions, foreign keys, subqueries, triggers, user-defined types
-and functions.  This distribution also contains C language bindings.
+## التشغيل
 
-Copyright and license information can be found in the file COPYRIGHT.
+- اضغط **Run** أو شغّل `npm run dev`.
+- واجهة المعاينة تستخدم المنفذ 5000.
+- الاتصال بقاعدة Replit PostgreSQL يتم عبر `DATABASE_URL` الذي يوفّره Replit.
+- `npm run db:init` يفحص اتصال القاعدة والمخطط فقط؛ الخادم لا ينشئ جداول عند التشغيل.
+- مصدر مخطط PostgreSQL: `database/schema.sql`.
+- لتشغيل فحوص قاعدة البيانات: `npm run db:test`.
+- لترجمة واجهة TypeScript بعد تعديل `src/`: `npm run build`.
 
-General documentation about this version of PostgreSQL can be found at
-<https://www.postgresql.org/docs/devel/>.  In particular, information
-about building PostgreSQL from the source code can be found at
-<https://www.postgresql.org/docs/devel/installation.html>.
+تم نقل بيانات SQLite الموجودة في ملف Opera إلى قاعدة التطوير. أداة الاستيراد لمرة واحدة موجودة في `scripts/import-sqlite.ts`، وتعمل فقط عند تحديد `SQLITE_IMPORT_FILE` وعندما تكون قاعدة PostgreSQL خالية.
 
-The latest version of this software, and related software, may be
-obtained at <https://www.postgresql.org/download/>.  For more information
-look at our web site located at <https://www.postgresql.org/>.
+## تنظيم المجلدات
+
+- `src/`: مصدر واجهة الموقع.
+- `assets/` و`pages/`: ملفات الموقع.
+- `server/`: خادم Node.js وواجهات الحسابات والمصادقة.
+- `database/schema.sql`: مخطط PostgreSQL الحالي.
+- `database/postgresql-source/`: مصدر PostgreSQL الأصلي الذي كان في المشروع قبل استيراد Opera؛ محفوظ كمرجع منفصل وليس الخادم الذي يتصل به الموقع.
+- `database/legacy-sqlite-*`: ملفات SQLite القديمة المؤرشفة للرجوع إليها فقط.
+
+## إعدادات اختيارية
+
+- البريد يحتاج `RESEND_API_KEY` و`MAIL_FROM`.
+- OAuth يحتاج `GOOGLE_CLIENT_ID` و`GOOGLE_CLIENT_SECRET` أو `GITHUB_CLIENT_ID` و`GITHUB_CLIENT_SECRET`.
+- أضف القيم السرية من Replit Secrets، ولا ترفع ملف `.env`.
+- اضبط `PUBLIC_URL` لروابط OAuth، و`TRUST_PROXY=1` عند التشغيل خلف وكيل موثوق.
+
+مخطط PostgreSQL الحالي يغطي جداول الموقع والمصادقة وعرضي الصلاحيات المستخدمين في الخادم. ملفات الترحيل والاختبارات الأصلية الخاصة بمشغلات SQLite وواجهاته محفوظة في `database/legacy-sqlite-*`؛ لم تُنقل كل تلك المشغلات والعروض بعد.
