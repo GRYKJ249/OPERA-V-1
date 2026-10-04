@@ -32,7 +32,7 @@ export function initSocial(): void {
   const msg = document.getElementById('lgm'); if (!btns.length || !msg) return;
   const say = (k: string, err = true) => { msg.classList.toggle('err', err); msg.textContent = t(MSG[k] ?? MSG.invalid); };
   const busy = (b: HTMLButtonElement, on: boolean) => { b.disabled = on; b.classList.toggle('ld', on); };
-  const home = () => { location.href = new URL('../index.html', location.href).href; };
+  const home = () => { location.href = '/git/'; };
 
   // رجوع من Google/GitHub برمز خطأ في الرابط
   const oe = new URLSearchParams(location.search).get('oauth');

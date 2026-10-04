@@ -34,7 +34,7 @@ export function initSocial() {
         return;
     const say = (k, err = true) => { msg.classList.toggle('err', err); msg.textContent = t(MSG[k] ?? MSG.invalid); };
     const busy = (b, on) => { b.disabled = on; b.classList.toggle('ld', on); };
-    const home = () => { location.href = new URL('../index.html', location.href).href; };
+    const home = () => { location.href = '/git/'; };
     // رجوع من Google/GitHub برمز خطأ في الرابط
     const oe = new URLSearchParams(location.search).get('oauth');
     if (oe)

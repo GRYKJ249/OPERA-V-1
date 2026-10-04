@@ -30,11 +30,13 @@ export function initFeatures() {
     else
         addEventListener('load', () => setTimeout(hide, 500));
     // زر الدخول في الشريط العلوي
-    const goLogin = () => { location.href = new URL('pages/login.html', ROOT).href; };
     const lb = q('.login');
+    const goLogin = () => { location.href = lb?.dataset.signedIn === 'true' ? '/git/' : new URL('pages/login.html', ROOT).href; };
     lb?.addEventListener('click', goLogin);
-    fetch('/api/auth/me', { credentials: 'same-origin' }).then(r => r.ok ? r.json() : null).then(j => { if (j?.user && lb)
-        lb.textContent = j.user.displayName || j.user.email.split('@')[0]; }).catch(() => { });
+    fetch('/api/auth/me', { credentials: 'same-origin' }).then(r => r.ok ? r.json() : null).then(j => { if (j?.user && lb) {
+        lb.textContent = j.user.displayName || j.user.email.split('@')[0];
+        lb.dataset.signedIn = 'true';
+    } }).catch(() => { });
     // زر الأعلى + تأثيرات التمرير (الخلفية المتغيرة والبارالاكس)
     const up = q('#up');
     up?.addEventListener('click', () => scrollTo({ top: 0, behavior: RM ? 'auto' : 'smooth' }));
