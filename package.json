@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc -p config/tsconfig.json",
+    "gitea:build": "bash scripts/build-gitea-source.sh",
     "watch": "tsc -p config/tsconfig.json -w",
     "start": "node --no-warnings --env-file-if-exists=.env server/serve.ts",
     "db:test": "node --no-warnings server/db-postgres.test.ts",

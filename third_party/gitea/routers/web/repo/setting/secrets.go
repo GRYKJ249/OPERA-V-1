@@ -1,0 +1,130 @@
+// Copyright 2022 The Gitea Authors. All rights reserved.
+// SPDX-License-Identifier: MIT
+
+package setting
+
+import (
+	"errors"
+	"net/http"
+
+	repo_model "gitea.dev/models/repo"
+	user_model "gitea.dev/models/user"
+	"gitea.dev/modules/setting"
+	"gitea.dev/modules/templates"
+	shared "gitea.dev/routers/web/shared/secrets"
+	shared_user "gitea.dev/routers/web/shared/user"
+	"gitea.dev/services/context"
+)
+
+const (
+	// TODO: Separate secrets from runners when layout is ready
+	tplRepoSecrets templates.TplName = "repo/settings/actions"
+	tplOrgSecrets  templates.TplName = "org/settings/actions"
+	tplUserSecrets templates.TplName = "user/settings/actions"
+)
+
+type secretsCtx struct {
+	Owner           *user_model.User
+	Repo            *repo_model.Repository
+	OwnerID         int64
+	RepoID          int64
+	IsRepo          bool
+	IsOrg           bool
+	IsUser          bool
+	SecretsTemplate templates.TplName
+	RedirectLink    string
+}
+
+func getSecretsCtx(ctx *context.Context) (*secretsCtx, error) {
+	if ctx.Data["PageIsRepoSettings"] == true {
+		return &secretsCtx{
+			Repo:            ctx.Repo.Repository,
+			RepoID:          ctx.Repo.Repository.ID,
+			IsRepo:          true,
+			SecretsTemplate: tplRepoSecrets,
+			RedirectLink:    ctx.Repo.RepoLink + "/settings/actions/secrets",
+		}, nil
+	}
+
+	if ctx.Data["PageIsOrgSettings"] == true {
+		if _, err := shared_user.RenderUserOrgHeader(ctx); err != nil {
+			ctx.ServerError("RenderUserOrgHeader", err)
+			return nil, nil //nolint:nilnil // error is already handled by ctx.ServerError
+		}
+		return &secretsCtx{
+			Owner:           ctx.ContextUser,
+			OwnerID:         ctx.ContextUser.ID,
+			IsOrg:           true,
+			SecretsTemplate: tplOrgSecrets,
+			RedirectLink:    ctx.Org.OrgLink + "/settings/actions/secrets",
+		}, nil
+	}
+
+	if ctx.Data["PageIsUserSettings"] == true {
+		return &secretsCtx{
+			Owner:           ctx.Doer,
+			OwnerID:         ctx.Doer.ID,
+			IsUser:          true,
+			SecretsTemplate: tplUserSecrets,
+			RedirectLink:    setting.AppSubURL + "/user/settings/actions/secrets",
+		}, nil
+	}
+
+	return nil, errors.New("unable to set Secrets context")
+}
+
+func Secrets(ctx *context.Context) {
+	ctx.Data["Title"] = ctx.Tr("actions.actions")
+	ctx.Data["PageType"] = "secrets"
+	ctx.Data["PageIsSharedSettingsSecrets"] = true
+
+	sCtx, err := getSecretsCtx(ctx)
+	if err != nil {
+		ctx.ServerError("getSecretsCtx", err)
+		return
+	}
+
+	if sCtx.IsRepo {
+		ctx.Data["DisableSSH"] = setting.SSH.Disabled
+	}
+
+	shared.SetSecretsContext(ctx, sCtx.OwnerID, sCtx.RepoID)
+	if ctx.Written() {
+		return
+	}
+	ctx.HTML(http.StatusOK, sCtx.SecretsTemplate)
+}
+
+func SecretsPost(ctx *context.Context) {
+	sCtx, err := getSecretsCtx(ctx)
+	if err != nil {
+		ctx.ServerError("getSecretsCtx", err)
+		return
+	}
+
+	if ctx.HasError() {
+		ctx.JSONError(ctx.GetErrMsg())
+		return
+	}
+
+	shared.PerformSecretsPost(
+		ctx,
+		sCtx.Owner,
+		sCtx.Repo,
+		sCtx.RedirectLink,
+	)
+}
+
+func SecretsDelete(ctx *context.Context) {
+	sCtx, err := getSecretsCtx(ctx)
+	if err != nil {
+		ctx.ServerError("getSecretsCtx", err)
+		return
+	}
+	shared.PerformSecretsDelete(
+		ctx,
+		sCtx.Owner,
+		sCtx.Repo,
+		sCtx.RedirectLink,
+	)
+}
