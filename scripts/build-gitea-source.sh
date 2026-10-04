@@ -30,4 +30,6 @@ if (( node_major < 22 )); then
 fi
 
 cd "$SOURCE"
-TAGS="bindata" make build
+# The source is a release archive nested in the Opera repository. Explicitly set
+# the upstream tag so Make does not infer Opera's Git branch/commit as Gitea's version.
+GITHUB_REF_TYPE=tag GITHUB_REF_NAME=v28.0.0 TAGS=bindata make build
